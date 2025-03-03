@@ -1,13 +1,77 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
-</head>
-<body>
-    <h1>hello</h1>
-    <h2>nice</h2>
-    <h3>bye</h3>
-</body>
-</html>
+
+<style>
+    
+    body {
+            
+            background-color: #f4f4f4;
+            margin: 0;
+            padding: 0;
+            
+        }
+
+        .thecontainer {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 20px;
+            font-style: italic;
+            font-family: Arial, sans-serif;
+    }
+
+        .theheader  {
+            background: #333;
+            color: #fff;
+            padding: 10px 0;
+        }
+
+        .theheader a {
+            color: #fff;
+            text-decoration: none;
+            padding: 0 15px;
+        }
+
+        .theheader ul {
+            list-style: none;
+            padding: 0;
+        }
+
+        .theheader li {
+            display: inline;
+        }
+
+        .theheader a:hover {
+            color: #cccccc;
+            font-weight: bold;
+        }
+    .adminheader {
+        text-align: center;
+    }
+</style>
+
+<header class="theheader">
+    <div class="thecontainer">
+        <h1 class="adminheader">Admin Manage Technical Phone GT</h1>
+        <nav>
+            <ul>
+                <li class="current"><a href="admin.php">Home</a></li>
+                <li><a href="manage-category.php">Manage Categories</a></li>
+                <li><a href="manage_staff.php">Manage Staff</a></li>
+                <li><a href="A.manageUser.php">Manage Customer</a></li>
+                <li><a href="productList.php">Product List</a></li>
+                <li><a href="manage_product.php">Manage Product</a></li>
+                <li><a href="A.ManageOrder.php">Manage Order</a></li>
+                <li><a href="index.html">Logout</a></li>
+            </ul>
+        </nav>
+    </div>
+</header>
+<!--    put this to display the header
+
+<div id="navbar"></div>
+
+    <script>
+        fetch('admin_menu.html')
+            .then(response => response.text())
+            .then(data => {
+                document.getElementById('navbar').innerHTML = data;
+            });
+    </script> -->
