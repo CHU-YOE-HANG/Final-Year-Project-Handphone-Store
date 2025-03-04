@@ -28,7 +28,7 @@
 
         label {
             display: block;
-            margin-bottom: 5px;
+            margin-bottom: 20px;
         }
 
         input[type="text"] {
@@ -49,6 +49,26 @@
         .button:hover {
             background-color: #555;
         }
+
+        h2{
+            text-decoration: underline;
+            
+        }
+
+        table{
+            width: 100%;
+            border-collapse: collapse;
+            
+        }
+
+        th,td{
+            border: 3px solid black;
+            padding: 8px; 
+            text-align: center;
+
+        }
+
+
     </style>
     
 
@@ -66,20 +86,31 @@
 
 
     <section class="container">
-        <h2>Add New Category</h2>
+        <bold><h2>Add New Phone Category</h2></bold>
         <form method="post" action="">
-            <label for="category">Category Name</label>
-            <input type="text" id="category" name="brand_name" required>
-            <label for="country">Country Origin</label>
+            <label for="category">Phone Category Name</label>
+            <input type="text" id="category" name="brand_name" required><br></br>
+            <label for="country">Phone Country Origin</label>
             <input type="text" id="country" name="country_origin" required>
             <button name="catergorys" type="submit" class="button">Add Category</button>
         </form>
-        <h2>Existing Categories</h2>
+        <br></br><h2>Phone Categories</h2>
+        
         <?php
+        
+            echo "<table border='1'>";
+            echo "<tr><th>Phone Model</th><th>Country</th></tr>";
+            //SQL checkiing and take the details in brand information
             $result = mysqli_query($connect, "SELECT * FROM brand");
+            //使用while循环遍历查询结果的每一行数据
             while($row = mysqli_fetch_assoc($result)) {
-                echo "<ul><li><p>".$row['brand_name']."<br>".$row['country_origin']."</p></li></ul>";
+                echo "<tr>";
+                echo "<td>".$row['brand_name']."</td>";
+                echo "<td>".$row['country_origin']."</td>";
+                echo "</tr>";
             }
+
+            echo "</table>";
         ?>
         <?php
             if(isset($_POST["catergorys"])){
