@@ -6,13 +6,63 @@ include("dataconnect.php");
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Edit Staff Information</title>
+    <title>EDIT STAFF INFORMATIONS</title>
     <link href="view,edit_page.css" type="text/css" rel="stylesheet" />
 
 
 </head>
 <body>
+<style>
+            
 
+            body {
+    background-color: rgb(233, 236, 239);
+    padding: 30px;
+}
+
+.container {
+    max-width: 800px;
+    margin: auto;
+    background: white;
+    padding: 30px;
+    border-radius: 8px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+h2 {
+    text-align: center;
+    font-size:35px;
+}
+
+p {
+    margin: 10px 0;
+    font-size: 18px;
+
+}
+
+.btn {
+    display: block;
+    width: 100px;
+    padding: 20px;
+    margin: 10px auto;
+    text-align: center;
+    background-color: #0a0a56;
+    color: white;
+    text-decoration: none;
+    border-radius: 5px;
+	
+}
+
+.btn:hover {
+    opacity: 0.8;
+}
+
+b {
+    display: block;
+    margin: 10px 0;
+}
+
+</style>
 
 <div class="container">
    <?php
@@ -23,10 +73,7 @@ $row=mysqli_fetch_assoc($result);
 ?> 
 
 <form name=thefrm method="post" action="">
-<h2>Edit Staff Information</h2>
-<a class="btn backbtn" href="manage_staff.php">Back</a>
-<a class="btn viewbtn" href="staff_detail.php?id=<?php echo $row['employee_id']?>">View Information</a>
-
+<h2>EDIT STAFF INFORMATIONS</h2>
 
 
 <p>Staff Name:<input type="text" name="name"  value="<?php echo $row['name'];?>"> </p>
@@ -57,6 +104,8 @@ $row=mysqli_fetch_assoc($result);
 <p><input type="submit" name="savebtn" value="UPDATE"></p>
 <p><input type="reset" name="resetbtn" value="RESET" /></p>
 
+    <a class="btn backbtn" href="manage_staff.php">Back</a>
+    <a class="btn viewbtn" href="staff_detail.php?id=<?php echo $row['employee_id']?>">View Information</a>
 </form>
 
 <?php
@@ -84,7 +133,6 @@ mysqli_query($connect,"UPDATE staff SET name='$name', email='$email', role='$rol
 
 }
 ?>
-
-
+    
 </body>
 </html>

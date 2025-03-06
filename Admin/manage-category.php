@@ -52,6 +52,7 @@
 
         h2{
             text-decoration: underline;
+            font-size:35px;
             
         }
 

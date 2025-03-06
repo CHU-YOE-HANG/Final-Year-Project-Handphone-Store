@@ -33,6 +33,10 @@ include("dataconnect.php");
     .btn:hover {
     opacity: 0.8;
     }
+
+    h2{
+        font-size:35px;
+    }
     </style>
 
 <div id="navbar"></div>
@@ -89,8 +93,8 @@ function resignedlist(){
    
 <div class=firstdiv>
     <h2>Manage Staff</h2>
-        <button class="addstaffbtn" onclick="showaddbox()">ADD STAFF</button >
-        <button class="addstaffbtn" onclick="resignedlist()">Resigned employees</button >
+        <button class="addstaffbtn" onclick="showaddbox()">Add Staff</button >
+        <button class="addstaffbtn" onclick="resignedlist()">Resigned Employees</button >
         <table id="staff_table">
         <tr id="nophp">
             <th>ID</th>
@@ -145,7 +149,7 @@ if (isset($_GET["statusid"])) {
 <div id="staffModal" class="modal">
     <div class="modal-content">
         <span class="close" onclick="showaddbox()">&times;</span>
-        <h2  id="addstaff_header">Add Staff</h2>
+        <h2  id="addstaff_header">Add Staff</h2><br>
         <form method="POST" action="">
             <label >Name:</label><br>
             <input type="text" id="name" name="name" required><br>
@@ -169,7 +173,7 @@ if (isset($_GET["statusid"])) {
             <textarea  id="address" name="address" required></textarea><br>
 
             <label >Phone Number:</label><br>
-            <input type="tel" id="phone_number" name="phone_number" required><br><br>
+            <input type="tel" id="phone_number" name="phone_number" required><br><br><br>
 
             <input type="submit" value="Add Staff">
         </form>

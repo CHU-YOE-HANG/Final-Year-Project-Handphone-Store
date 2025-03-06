@@ -9,10 +9,66 @@ include("dataconnect.php");
     <title>STAFF DETAIL</title>
     <link href="view,edit_page.css" type="text/css" rel="stylesheet" />
 </head>
+
+<style>
+
+			
+
+body {
+    background-color: rgb(233, 236, 239);
+    padding: 30px;
+}
+
+.container {
+    max-width: 800px;
+    margin: auto;
+    background: white;
+    padding: 30px;
+    border-radius: 8px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+h2 {
+    text-align: center;
+	font-size:35px;
+}
+
+p {
+    margin: 10px 0;
+    font-size: 18px;
+
+}
+
+.btn {
+    display: block;
+    width: 100px;
+    padding: 20px;
+    margin: 10px auto;
+    text-align: center;
+    background-color: #0a0a56;
+    color: white;
+    text-decoration: none;
+    border-radius: 5px;
+	
+}
+
+.btn:hover {
+    opacity: 0.8;
+}
+
+b {
+    display: block;
+    margin: 10px 0;
+}
+
+
+
+</style>
+
 <body>
     <div class="container">
     <h2>STAFF DETAIL</h2>
-    <a class="btn backbtn" href="manage_staff.php">Back </a>
+    
    
     <?php
 		 if(isset($_GET['id']))//the button id
@@ -20,7 +76,6 @@ include("dataconnect.php");
 			$staffdetail = $_GET["id"];
 			$result=mysqli_query($connect,"SELECT *FROM staff WHERE employee_id=$staffdetail ");
 			$row = mysqli_fetch_assoc($result);
-		echo ' <a class="btn viewbtn" href="edit_staff.php?id='. $row['employee_id']. '">Edit Information</a>';
 		echo "<p><b>ID</b> </p>";
       
 		echo $row["employee_id"]; 
@@ -47,9 +102,11 @@ include("dataconnect.php");
             echo '<td>RESIGNED</td>';
         }
 		 }
+
+		 echo ' <a class="btn viewbtn" href="edit_staff.php?id='. $row['employee_id']. '">Edit Information</a>';
 		?>
 
-
+		<a class="btn backbtn" href="manage_staff.php">Back </a>
 
 
 
