@@ -97,11 +97,9 @@ b {
 
             echo "<p><b>ADDRESS</b></p>";
             echo $row["address"];
-            echo "<p><b>Password</b></p>";
-            echo $row["password"]; 
             echo "<p><b>Registration Time</b></p>";
             echo $row["registration_time"]; 
-            echo '<a class="btn viewbtn" href="edit_customer.php?id=' . $row['user_id'] . '">Edit Information</a>';
+            
         }
         
     }

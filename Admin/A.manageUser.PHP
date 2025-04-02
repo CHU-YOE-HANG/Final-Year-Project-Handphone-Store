@@ -56,15 +56,7 @@ function restore_cfm(){
     return ans;
 }
 
-function showaddbox(){
-    var modal=document.getElementById("customerModal");
-                       
-    if(modal.style.display==="none"|| modal.style.display===""){
-        modal.style.display="block";
-    }else{
-        modal.style.display="none";
-    }
-}
+
 
 function recycle_binlist(){
     var modal=document.getElementById("recycle_box");
@@ -92,7 +84,7 @@ function recycle_binlist(){
     <div class="firstsiv">
     <h2>Manage Customer</h2>
 
-    <button onclick="showaddbox()">Add Customer</button>
+   
     <button onclick="recycle_binlist()">Recycle Bin</button>
 
 <table>
@@ -119,7 +111,6 @@ while($row=mysqli_fetch_assoc($result)){
 <th><?php echo  $row['phone_number']?></th>
 <th><?php echo  $row['gender']?></th>
 <th><a class="btn viewbtn" href="customer_detail.php?id=<?php echo $row['user_id']?>"> VIEW</a></th>
-<th><a class="btn editbtn" href="edit_customer.php?id=<?php echo $row['user_id']?>">EDIT</a></th>
 <th><a class="btn removebtn" onclick="return confirmation()" href="A.manageUser.php?statusid=<?php echo $row['user_id']?>">REMOVE</a></th>
 
 </tr>
@@ -135,44 +126,7 @@ if(isset($_GET["statusid"])){
 </table>
 <p> Number of customer : <?php echo $count; ?></p>   
     </div>
-    <!--this is add CUSTOMER window-->
-<div id="customerModal" class="modal">
-
-<div class="modal-content">
-<span class="close" onclick="showaddbox()">&times;</span>
-<h2 id="addcustomer_header">ADD CUSTOMER</h2><br>
-<form method="POST" action="">
-
-<label>User name</label>
-<input type="text" id="name" name="name" required><br><br>
-
-<label>Email</label>
-<input type="text" name="email" required><br><br>
-
-<label>Phone Number</label>
-<input type="tel" id="phone" name="phone_number" required><br><br>
-
-<label>Gender</label><br>
-<select id="gender" name="gender" required>
-<option value="UNKNOW">Prefer not to say</option>
-<option value="MALE">MALE</option>
-<option value="FEMALE">FEMALE</option>
-</select><br><br>
-
-<label>Address</label><br>
-<textarea name="address"></textarea><br><br>
-
-<label>Password</label><br>
-<input type="password" name="password" required><br><br><br>
-
-<input type="submit" value="Add Customer">
-
-</form>
-
-</div>
-</div>
-
-
+    
 
 <?php
    if ($_SERVER["REQUEST_METHOD"] == "POST") {
@@ -181,7 +135,7 @@ if(isset($_GET["statusid"])){
     $phone_number = $_POST["phone_number"];
     $gender = $_POST["gender"];
     $address = $_POST["address"];
-    $password = $_POST["password"];
+    
 
     $check_query = "SELECT * FROM user WHERE email = '$email'";
     $check_result = mysqli_query($connect, $check_query);
@@ -190,8 +144,8 @@ if(isset($_GET["statusid"])){
         echo '<script>alert("Email already exists. Please use a different email address!");</script>';
     } else {
         
-        $sql = "INSERT INTO user (username, address, phone_number, email, gender, password) 
-                VALUES ('$name', '$address', '$phone_number', '$email', '$gender', '$password')";
+        $sql = "INSERT INTO user (username, address, phone_number, email, gender) 
+                VALUES ('$name', '$address', '$phone_number', '$email', '$gender')";
 
         if (mysqli_query($connect, $sql)) {
             echo '<script>alert("New customer added successfully!"); window.location.href = "A.manageUser.php";</script>';
@@ -234,8 +188,7 @@ while($row=mysqli_fetch_assoc($resigned_result))
 <th><?php echo $row['phone_number']?></th>
 <th><?php echo $row['gender']?></th>
 
-<th><a class="btn viewbtn" href="customer_detail.php?id=<?php echo $row['user_id']?>">VIEW</a></th>    
-<th><a class="btn editbtn" href="edit_customer.php?id=<?php echo $row['user_id']?>">EDIT</a></th>  
+<th><a class="btn viewbtn" href="customer_detail.php?id=<?php echo $row['user_id']?>">VIEW</a></th>     
 <th><a class="btn restorebtn" onclick="return restore_cfm()" href="A.manageUser.php?reinstateid=<?php echo $row['user_id']?>">RESTORE</a></th>
 <th><a class="btn removebtn" onclick="return delete_cfm()" href="A.manageUser.php?deleteid=<?php echo $row['user_id']?>">DELETE RECORD</a></th>
 
