@@ -215,12 +215,7 @@
         });
 </script> 
 
-    <div class="container">
-        <h1>Manage Product</h1>
-        <div id="productContainer">
-            <!-- 产品图像将显示在这里 -->
-        </div>
-    </div>
+   
   
     <div class="wireframe">
         <form action="add_product.php" method="post">
