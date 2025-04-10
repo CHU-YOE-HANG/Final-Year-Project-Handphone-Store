@@ -218,7 +218,7 @@
    
   
     <div class="wireframe">
-        <form action="add_product.php" method="post">
+        <form action="add_product.php" method="post" enctype="multipart/form-data">
         <label for="brand">Brand:</label>
                 <select name="brand">
                     <option>Choose the brand</option>
@@ -241,6 +241,8 @@
             <input type="number" id="quantity" name="quantity" required>
             <label for="price">Price:</label>
             <input type="number" id="price" name="price" required>
+            <label for="price">Model Image</label>
+            <input type="file" id="image" name="image" required>
             
             
             <div class="button-group">
