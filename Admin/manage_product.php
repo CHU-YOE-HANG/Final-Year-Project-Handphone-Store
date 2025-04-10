@@ -216,7 +216,7 @@
 </script> 
 
    
-  
+    <!--The enctype=multipart/form-data is for upload picture-->
     <div class="wireframe">
         <form action="add_product.php" method="post" enctype="multipart/form-data">
         <label for="brand">Brand:</label>
