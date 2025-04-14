@@ -61,7 +61,13 @@ b {
     margin: 10px 0;
 }
 
-
+footer {
+        text-align: center;
+        padding: 20px;
+        background-color: #333;
+        color: #fff;
+        font-size: 20px;
+    }
 
 </style>
 
@@ -109,7 +115,9 @@ b {
 		<a class="btn backbtn" href="manage_staff.php">Back </a>
 
 
-
     </div>
+    <footer>
+        <p>&copy; 2025 Mobile Website. All rights reserved.</p>
+    </footer>
 </body>
 </html>

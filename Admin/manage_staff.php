@@ -37,16 +37,25 @@ include("dataconnect.php");
     h2{
         font-size:35px;
     }
+
+    footer {
+        text-align: center;
+        padding: 20px;
+        background-color: #333;
+        color: #fff;
+        font-size: 20px;
+    }
     </style>
 
-<div id="navbar"></div>
+
+<div id="menu"></div>
 
 
 <script>
  fetch('A.menu.html')
         .then(response => response.text())
         .then(data => {
-            document.getElementById('navbar').innerHTML = data;
+            document.getElementById('menu').innerHTML = data;
         });
 
 function confirmation()
@@ -323,5 +332,8 @@ if (isset($_GET["deleteid"])) {
     </div>
 </div>
 
+    <footer>
+        <p>&copy; 2025 Mobile Website. All rights reserved.</p>
+    </footer>
 </body>
 </html>

@@ -15,7 +15,7 @@ include("dataconnect.php");
 <style>
             
 
-            body {
+    body {
     background-color: rgb(233, 236, 239);
     padding: 30px;
 }
@@ -62,6 +62,13 @@ b {
     margin: 10px 0;
 }
 
+footer {
+        text-align: center;
+        padding: 20px;
+        background-color: #333;
+        color: #fff;
+        font-size: 20px;
+    }
 </style>
 
 <div class="container">
@@ -133,6 +140,8 @@ mysqli_query($connect,"UPDATE staff SET name='$name', email='$email', role='$rol
 
 }
 ?>
-    
+    <footer>
+        <p>&copy; 2025 Mobile Website. All rights reserved.</p>
+    </footer>
 </body>
 </html>

@@ -57,17 +57,25 @@ b {
     display: block;
     margin: 10px 0;
 }
+
+footer {
+        text-align: center;
+        padding: 20px;
+        background-color: #333;
+        color: #fff;
+        font-size: 20px;
+    }
 </style>
 
 <body>
     
-<div id="navbar"></div>
+<div id="menu"></div>
 
 <script>
     fetch('A.menu.html')
         .then(response => response.text())
         .then(data => {
-            document.getElementById('navbar').innerHTML = data;
+            document.getElementById('menu').innerHTML = data;
         });
 </script> 
 
@@ -108,5 +116,9 @@ b {
     <a class="btn backbtn" href="A.manageUser.php">Back </a>
    
     </div>
+
+    <footer>
+        <p>&copy; 2025 Mobile Website. All rights reserved.</p>
+    </footer>
 </body>
 </html>

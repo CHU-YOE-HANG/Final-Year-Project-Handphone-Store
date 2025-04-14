@@ -180,6 +180,14 @@
                 margin-bottom: 10px;
             }
         }
+
+        footer {
+        text-align: center;
+        padding: 20px;
+        background-color: #333;
+        color: #fff;
+        font-size: 20px;
+        }
     </style>
 
 <script>
@@ -203,13 +211,13 @@
 </head>
 
 <body>
-<div id="navbar"></div>
+<div id="menu"></div>
 
 <script>
     fetch('A.menu.html')
         .then(response => response.text())
         .then(data => {
-            document.getElementById('navbar').innerHTML = data;
+            document.getElementById('menu').innerHTML = data;
         });
 </script> 
 
@@ -294,3 +302,6 @@ if(isset($_POST["updateP"])) {
     }
 }
 ?>
+    <footer>
+        <p>&copy; 2025 Mobile Website. All rights reserved.</p>
+    </footer>
