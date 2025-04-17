@@ -33,13 +33,20 @@
 
         form.search-sort-form input,
         form.search-sort-form select,
-        form.search-sort-form button,
         .clear-button {
             padding: 10px 14px;
             margin: 6px;
             border-radius: 8px;
             border: 1px solid #ccc;
             font-size: 16px;
+            
+        }
+
+        form.search-sort-form button
+        {
+            background-color:rgb(179, 155, 84);
+            padding: 10px 14px;
+            margin: 6px;
         }
 
         .clear-button {
@@ -93,13 +100,12 @@
             transition: background-color 0.3s ease;
         }
 
-        .button-cart,
+       
         .button-update {
             background-color: #333;
             color: white;
         }
 
-        .button-cart:hover,
         .button-update:hover {
             background-color: rgb(27, 13, 70);
         }
@@ -159,7 +165,7 @@
         </select>
 
         <button type="submit">Apply</button>
-        <a href="products.php" class="button clear-button">Clear Filters</a>
+        <a href="productList.php" class="button clear-button">Clear Filters</a>
     </form>
 
     <table>
