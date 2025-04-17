@@ -116,6 +116,7 @@
                 <th>Model Name</th>
                 <th>Brand</th>
                 <th>Price (RM)</th>
+                <th>Quantity</th>
                 <th>Actions</th>
             </tr>
         </thead>
@@ -130,8 +131,9 @@
                 <td><?php echo $row['model_name'] ?></td>
                 <td><?php echo $row['brand_name'] ?></td>
                 <td><?php echo $row['price'] ?></td>
+                <td><?php echo $row['quantity'] ?></td>
                 <td class="buttons">
-                    <button class="button-cart" onclick="manageProduct(<?php echo $row['id'] ?>)">Add Product</button>
+                    
                     <button class="button-update" onclick="updateProduct(<?php echo $row['id'] ?>)">Update Product</button>
                 </td>
             </tr>
@@ -142,12 +144,7 @@
 </div>
 
 <script>
-    function manageProduct(productId) {
-        const productElement = document.getElementById(productId);
-        const productImage = productElement.querySelector('.product-image').src;
-        localStorage.setItem('productImage', productImage);
-        window.location.href = 'manage_product.php';
-    }
+
 
     function updateProduct(productId) {
         const productElement = document.getElementById(productId);
