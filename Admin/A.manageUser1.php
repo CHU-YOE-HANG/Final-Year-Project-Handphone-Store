@@ -118,20 +118,20 @@ function recycle_binlist(){
     </tr>
 
 <?php
-$result=mysqli_query($connect,"SELECT * FROM register WHERE status='active'");
+$result=mysqli_query($connect,"SELECT * FROM user WHERE status='active'");
 $count=mysqli_num_rows($result);
 while($row=mysqli_fetch_assoc($result)){
 ?>
 
 <tr>
 
-<th><?php echo  $row['Regis_ID']?></th>
-<th><?php echo  $row['Regis_Username']?></th>
-<th><?php echo  $row['Regis_Email']?></th>
-<th><?php echo  $row['Regis_ContactNumber']?></th>
-<th><?php echo  $row['Regis_Gender']?></th>
-<th><a class="btn viewbtn" href="customer_detail.php?id=<?php echo $row['Regis_ID']?>"> VIEW</a></th>
-<th><a class="btn removebtn" onclick="return confirmation()" href="A.manageUser.php?statusid=<?php echo $row['Regis_ID']?>">REMOVE</a></th>
+<th><?php echo  $row['user_id']?></th>
+<th><?php echo  $row['username']?></th>
+<th><?php echo  $row['email']?></th>
+<th><?php echo  $row['phone_number']?></th>
+<th><?php echo  $row['gender']?></th>
+<th><a class="btn viewbtn" href="customer_detail.php?id=<?php echo $row['user_id']?>"> VIEW</a></th>
+<th><a class="btn removebtn" onclick="return confirmation()" href="A.manageUser.php?statusid=<?php echo $row['user_id']?>">REMOVE</a></th>
 
 </tr>
 
@@ -139,7 +139,7 @@ while($row=mysqli_fetch_assoc($result)){
 }
 if(isset($_GET["statusid"])){
     $statusid=$_GET["statusid"];
-    mysqli_query($connect,"UPDATE user SET status='inactive' WHERE Regis_ID=$statusid");
+    mysqli_query($connect,"UPDATE user SET status='inactive' WHERE user_id=$statusid");
     echo '<script>alert("Remove successfully!"); window.location.href="A.manageUser.php";</script>';
 }
 ?>
@@ -157,14 +157,14 @@ if(isset($_GET["statusid"])){
     $address = $_POST["address"];
     
 
-    $check_query = "SELECT * FROM register WHERE Regis_Email = '$email'";
+    $check_query = "SELECT * FROM user WHERE email = '$email'";
     $check_result = mysqli_query($connect, $check_query);
 
     if (mysqli_num_rows($check_result) > 0) {
         echo '<script>alert("Email already exists. Please use a different email address!");</script>';
     } else {
         
-        $sql = "INSERT INTO user (Regis_Username, Regis_AddressLine1, Regis_ContactNumber, Regis_Email, Regis_Gender) 
+        $sql = "INSERT INTO user (username, address, phone_number, email, gender) 
                 VALUES ('$name', '$address', '$phone_number', '$email', '$gender')";
 
         if (mysqli_query($connect, $sql)) {
@@ -193,7 +193,7 @@ if(isset($_GET["statusid"])){
         <th colspan="4">Actions</th>
       </tr> 
 <?php
-$resigned_result=mysqli_query($connect,"SELECT * FROM register WHERE status='inactive'");
+$resigned_result=mysqli_query($connect,"SELECT * FROM user WHERE status='inactive'");
 
 $count=mysqli_num_rows($resigned_result);
 
@@ -202,28 +202,28 @@ while($row=mysqli_fetch_assoc($resigned_result))
 ?>
 
 <tr>
-<th><?php echo $row['Regis_ID']?></th>
-<th><?php echo $row['Regis_Username']?></th>
-<th><?php echo $row['Regis_Email']?></th>
-<th><?php echo $row['Regis_ContactNumber']?></th>
-<th><?php echo $row['Regis_Gender']?></th>
+<th><?php echo $row['user_id']?></th>
+<th><?php echo $row['username']?></th>
+<th><?php echo $row['email']?></th>
+<th><?php echo $row['phone_number']?></th>
+<th><?php echo $row['gender']?></th>
 
-<th><a class="btn viewbtn" href="customer_detail.php?id=<?php echo $row['Regis_ID']?>">VIEW</a></th>     
-<th><a class="btn restorebtn" onclick="return restore_cfm()" href="A.manageUser.php?reinstateid=<?php echo $row['Regis_ID']?>">RESTORE</a></th>
-<th><a class="btn removebtn" onclick="return delete_cfm()" href="A.manageUser.php?deleteid=<?php echo $row['Regis_ID']?>">DELETE RECORD</a></th>
+<th><a class="btn viewbtn" href="customer_detail.php?id=<?php echo $row['user_id']?>">VIEW</a></th>     
+<th><a class="btn restorebtn" onclick="return restore_cfm()" href="A.manageUser.php?reinstateid=<?php echo $row['user_id']?>">RESTORE</a></th>
+<th><a class="btn removebtn" onclick="return delete_cfm()" href="A.manageUser.php?deleteid=<?php echo $row['user_id']?>">DELETE RECORD</a></th>
 
 </tr>
 <?php
  }
 if (isset($_GET["reinstateid"])) {
     $reinstateid = $_GET["reinstateid"];
-    mysqli_query($connect, "UPDATE register SET status='active' WHERE Regis_ID='$reinstateid'");
+    mysqli_query($connect, "UPDATE user SET status='active' WHERE user_id='$reinstateid'");
     echo '<script>alert("Restore successfully!"); window.location.href="A.manageUser.php";</script>';
 }
 
 if (isset($_GET["deleteid"])) {
     $deleteid = $_GET["deleteid"];
-    mysqli_query($connect, "DELETE FROM register WHERE Regis_ID=$deleteid");
+    mysqli_query($connect, "DELETE FROM user WHERE user_id=$deleteid");
     echo '<script>alert("Customer record deleted successfully!"); window.location.href="A.manageUser.php";</script>';
 }
 ?>

@@ -123,11 +123,12 @@
             color: #333;
         }
 
-        .wireframe input[type="text"], .wireframe input[type="number"] {
+        .wireframe select,.wireframe input[type="text"], .wireframe input[type="number"] {
             padding: 10px;
             font-size: 16px;
             border: 1px solid #ccc;
             border-radius: 5px;
+            
         }
 
         .button-group {

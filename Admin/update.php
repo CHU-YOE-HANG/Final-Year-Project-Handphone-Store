@@ -188,6 +188,19 @@
         color: #fff;
         font-size: 20px;
         }
+
+        .btn
+        {
+            padding: 10px;
+            font-size: 16px;
+            color: #fff;
+            background-color: #e8491d;
+            border: none;
+            border-radius: 5px;
+            text-transform: uppercase;
+            font-weight: bold;
+            cursor: pointer;
+        }
     </style>
 
 <script>
@@ -269,7 +282,8 @@
                 <div class="button-group">
                     <div class="button-container">
                         <button type="submit" name="updateP" value="Update Product">Update Product</button>
-                        <a href="#" id="product-detail">Product Detail</a>
+                        <a class="btn backbtn" href="productList.php">Back </a>
+                        
                     </div>
                 </div>
             </form>

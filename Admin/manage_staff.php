@@ -45,6 +45,17 @@ include("dataconnect.php");
         color: #fff;
         font-size: 20px;
     }
+
+    .addstaffbtn
+    {
+        width: 200px;
+        padding: 10px;
+        margin: 10px auto;
+        background-color:hsl(194, 82.30%, 15.50%);
+        color: white;
+        text-decoration: none;
+        border-radius: 5px;
+    }
     </style>
 
 

@@ -175,6 +175,7 @@
                 <th>Model Name</th>
                 <th>Brand</th>
                 <th>Price (RM)</th>
+                <th>Quantity</th>
                 <th>Actions</th>
             </tr>
         </thead>
@@ -208,6 +209,7 @@
                 <td><?php echo $row['model_name'] ?></td>
                 <td><?php echo $row['brand_name'] ?></td>
                 <td><?php echo $row['price'] ?></td>
+                <td><?php echo $row['quantity'] ?></td>
                 <td class="buttons">
                     <button class="button-update" onclick="updateProduct(<?php echo $row['id'] ?>)">Update Product</button>
                 </td>
