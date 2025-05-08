@@ -15,7 +15,7 @@
         margin: 0;
         padding: 0;
         background-color: #f7f7f7;
-        font-weight: bold;
+        
     }
 
     main {

@@ -5,14 +5,14 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Admin</title>
-    <link rel="stylesheet" href="styles.css">
     <style>
         body{
             font-style: italic;
-            font-size: 18px;
+
         }
+
         .admin-panel {
-            padding: 30px;
+            padding: 300px;
         }
 
         table {
@@ -43,21 +43,19 @@
         h2{
             font-size:35px;
         }
-
-        p{
-            font-size:25px;
-        }
-
-        ul{
-            font-size:20px;
-        }
-
+        
         footer {
         text-align: center;
         padding: 20px;
         background-color: #333;
         color: #fff;
         font-size: 20px;
+        }
+        .admin-panel-container
+        {
+            max-width: 1300px;
+            margin: auto;
+            padding: 20px;
         }
     </style>
 </head>
@@ -71,7 +69,7 @@
                 document.getElementById('menu').innerHTML = data;
             });
     </script>
-    <section class="admin-panel container">
+    <section class="admin-panel-container">
         <h2>Admin Manage</h2>
         <p>Only accessible by admin users.</p>
         <ul>
@@ -87,20 +85,18 @@
                     <th>Phone Number</th>
                     <th>Gender</th>
                     <th>Email</th>
-                    <th>Register Time</th>
                 </tr>
                 <?php
                     mysqli_select_db($connect, "phone_shop");
-                    $result = mysqli_query($connect,"select * from user");
+                    $result = mysqli_query($connect,"select * from register");
                     while($row = mysqli_fetch_assoc($result)) {
                 ?>
                 <tr>
-                    <td><?php echo $row["username"];?></td>
-                    <td><?php echo $row["address"];?></td>
-                    <td><?php echo $row["phone_number"];?></td>
-                    <td><?php echo $row["gender"];?></td>
-                    <td><?php echo $row["email"];?></td>
-                    <td><?php echo $row["registration_time"];?></td>
+                    <td><?php echo $row["Regis_Username"];?></td>
+                    <td><?php echo $row["Regis_AddressLine1"];?></td>
+                    <td><?php echo $row["Regis_ContactNumber"];?></td>
+                    <td><?php echo $row["Regis_Gender"];?></td>
+                    <td><?php echo $row["Regis_Email"];?></td>
                 </tr>
                 <?php
                     }

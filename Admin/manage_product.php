@@ -4,10 +4,9 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>MANAGE PRODUCTAL</title>
+    <title>MANAGE PRODUCT</title>
     <link rel="stylesheet" href="styles.css">
     <style>
-        /* Internal CSS */
         body {
             font-family: Arial, sans-serif;
             background-color: rgb(104, 104, 116);
@@ -19,7 +18,7 @@
             width: 80%;
             margin: auto;
             overflow: hidden;
-            text-align: center; /* 居中对齐 */
+            text-align: center;
             padding-top: 50px;
         }
 
@@ -161,17 +160,25 @@
             background-color: blue;
         }
 
-        .button-group a {
-            margin-top: 5px;
-            font-size: 14px;
-            color: #333;
-            text-decoration: underline;
-            cursor: pointer;
+        .button-link {
+        display: inline-block;
+        margin-top: 20px;
+        padding: 10px 20px;
+        font-size: 16px;
+        color: #fff;
+        background-color: #e8491d;
+        border: none;
+        border-radius: 5px;
+        text-decoration: none;
+        text-transform: uppercase;
+        font-weight: bold;
+        text-align: center;
         }
 
-        .button-group a:hover {
-            color: #e8491d;
+        .button-link:hover {
+        background-color: blue;
         }
+
 
         @media (max-width: 600px) {
             .item {
@@ -257,7 +264,7 @@
             <div class="button-group">
                 <div class="button-container">
                     <button type="submit" name="savebtn" id="add-product">Add to Product</button>
-                    <a href="productList.php" id="back-product">Back</a>
+                    <a href="productList.php" id="back-product" class="button-link">Back</a>
                 </div>
             </div>
         </form>
