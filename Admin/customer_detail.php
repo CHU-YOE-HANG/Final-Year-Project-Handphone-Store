@@ -87,26 +87,24 @@ footer {
     <?php
     if(isset($_GET['id'])) {
         $customer_id = $_GET['id'];
-        $result = mysqli_query($connect, "SELECT * FROM user WHERE user_id = $customer_id");
+        $result = mysqli_query($connect, "SELECT * FROM register WHERE Regis_ID = $customer_id");
         if(mysqli_num_rows($result) > 0) {
             $row = mysqli_fetch_assoc($result);
             
             echo "<p><b>ID</b> </p>";
-            echo $row["user_id"];
+            echo $row["Regis_ID"];
             echo "<p><b>CUSTOMER NAME</b></p>";
-            echo $row["username"];
+            echo $row["Regis_Username"];
             echo "<p><b>EMAIL</b></p>";
-            echo $row["email"];
+            echo $row["Regis_Email"];
             echo "<p><b>PHONE NUMBER</b></p>";
-            echo $row["phone_number"];
+            echo $row["Regis_ContactNumber"];
 
             echo "<p><b>GENDER</b></p>";
-            echo $row["gender"];
+            echo $row["Regis_Gender"];
 
             echo "<p><b>ADDRESS</b></p>";
-            echo $row["address"];
-            echo "<p><b>Registration Time</b></p>";
-            echo $row["registration_time"]; 
+            echo $row["Regis_AddressLine1"];
             
         }
         
