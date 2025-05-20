@@ -12,9 +12,9 @@ include("dataconnect.php");
     <style>
     .btn {
     display: block;
-    width: 110px;
-    padding: 15px;
-    margin: 15px auto;
+    width: 100px;
+    padding: 10px;
+    margin: 10px auto;
     text-align: center;
     background-color:rgb(245, 140, 27);
     color: white;
@@ -28,9 +28,9 @@ include("dataconnect.php");
     color: white;
     text-decoration: none;
     border-radius: 5px;
-    width: 110px;
-    padding: 15px;
-    margin: 15px auto;
+    width: 200px;
+    padding: 10px;
+    margin: 10px auto;
 }
 .firstsiv {
     max-width: 1300px;
