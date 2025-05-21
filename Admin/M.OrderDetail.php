@@ -115,9 +115,14 @@ footer {
             echo $row["UName"];
             echo "<p><b>Order Item</b></p>";
             echo $row["Cphone"];
+            echo "<p><b>Price</b></p>";
+            echo $row["Cprice"];
+            echo "<p><b>Order Date</b></p>";
+            echo $row["Cdate"];
+            echo "<p><b>billing Address</b></p>";
+            echo $row["billing_address"];
             echo "<p><b>Total Price</b></p>";
             echo $row["TPrice"];
-            echo "<p><b>Product Image</b></p>";
 
         }
         

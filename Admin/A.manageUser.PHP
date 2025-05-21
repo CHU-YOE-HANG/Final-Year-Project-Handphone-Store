@@ -139,7 +139,7 @@ while($row=mysqli_fetch_assoc($result)){
 }
 if(isset($_GET["statusid"])){
     $statusid=$_GET["statusid"];
-    mysqli_query($connect,"UPDATE user SET status='inactive' WHERE Regis_ID=$statusid");
+    mysqli_query($connect,"UPDATE register SET status='inactive' WHERE Regis_ID=$statusid");
     echo '<script>alert("Remove successfully!"); window.location.href="A.manageUser.php";</script>';
 }
 ?>
