@@ -115,6 +115,8 @@ footer {
             echo $row["UName"];
             echo "<p><b>Order Item</b></p>";
             echo $row["Cphone"];
+            echo "<p><b>Order Quantity</b></p>";
+            echo $row["Cquantity"];
             echo "<p><b>Price</b></p>";
             echo $row["Cprice"];
             echo "<p><b>Order Date</b></p>";
