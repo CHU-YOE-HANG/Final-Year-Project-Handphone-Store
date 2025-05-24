@@ -56,6 +56,44 @@ include("dataconnect.php");
         text-decoration: none;
         border-radius: 5px;
     }
+
+    form.search-sort-form {
+        margin-bottom: 30px;
+        text-align: center;
+    }
+
+    form.search-sort-form input,
+    form.search-sort-form select
+    {
+        padding: 10px 14px;
+        margin: 6px;
+        border-radius: 8px;
+        border: 1px solid #ccc;
+        font-size: 16px;
+            
+    }
+
+    form.search-sort-form button
+    {
+        background-color:rgb(179, 155, 84);
+        padding: 10px 14px;
+        margin: 6px;
+    }
+
+    .clear-button {
+        text-decoration: none;
+        background-color: #888;
+        color: white;
+        padding: 10px 14px;
+        margin: 6px;
+        border-radius: 8px;
+        
+    }
+
+    .clear-button:hover {
+        background-color: #555;
+    }
+
     </style>
 
 
@@ -113,6 +151,17 @@ function resignedlist(){
    
 <div class=firstdiv>
     <h2>Manage Staff</h2>
+    <form method="GET" class="search-sort-form">
+    <input type="text" name="search" placeholder="Search by name" value="<?php echo isset($_GET['search']) ? $_GET['search'] : ''; ?>">
+        <select name="sort">
+        <option value="">Sort by</option>
+        <option value="name_asc" <?= isset($_GET['sort']) && $_GET['sort'] == 'name_asc' ? 'selected' : '' ?>>Name: A-Z</option>
+        <option value="name_desc" <?= isset($_GET['sort']) && $_GET['sort'] == 'name_desc' ? 'selected' : '' ?>>Name: Z-A</option>
+    </select>
+    <button class="buttons" type="submit">Apply</button>
+    <a class="button clear-button" href="manage_staff.php">Clear Filters</a>
+    </form>
+
         <button class="addstaffbtn" onclick="showaddbox()">Add Staff</button >
         <button class="addstaffbtn" onclick="resignedlist()">Resigned Employees</button >
         <table id="staff_table">
@@ -125,9 +174,19 @@ function resignedlist(){
         </tr>
  <?php
 
- $result=mysqli_query($connect,"SELECT *FROM staff WHERE status='active'");
- $count=mysqli_num_rows($result);
-
+$search = isset($_GET['search']) ? mysqli_real_escape_string($connect, $_GET['search']) : '';
+$sort = isset($_GET['sort']) ? $_GET['sort'] : '';
+$query = "SELECT * FROM staff where status='active'";
+if (!empty($search)) {
+$query .= " AND name LIKE '%$search%'";
+}
+if ($sort == 'name_asc') {
+$query .= " ORDER BY name ASC";
+} elseif ($sort == 'name_desc') {
+$query .= " ORDER BY name DESC";
+}
+$result = mysqli_query($connect, $query);
+$count=mysqli_num_rows($result);
 
  while($row=mysqli_fetch_assoc($result)){
 ?>

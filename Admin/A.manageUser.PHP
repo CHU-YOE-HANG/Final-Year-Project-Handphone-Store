@@ -10,52 +10,90 @@ include("dataconnect.php");
     <link href="manage_staff.css" type="text/css" rel="stylesheet" />
 
     <style>
-    .btn {
-    display: block;
-    width: 100px;
-    padding: 10px;
-    margin: 10px auto;
-    text-align: center;
-    background-color:rgb(245, 140, 27);
-    color: white;
-    text-decoration: none;
-    border-radius: 5px;
-}
+        .btn {
+        display: block;
+        width: 100px;
+        padding: 10px;
+        margin: 10px auto;
+        text-align: center;
+        background-color:rgb(245, 140, 27);
+        color: white;
+        text-decoration: none;
+        border-radius: 5px;
+        }
 
-.button
-{
-    background-color:rgb(245, 140, 27);
-    color: white;
-    text-decoration: none;
-    border-radius: 5px;
-    width: 200px;
-    padding: 10px;
-    margin: 10px auto;
-}
-.firstsiv {
-    max-width: 1300px;
-    margin: auto;
-    background: white;
-    padding: 20px;
-    border-radius: 8px;
-    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-}
-.btn:hover {
-    opacity: 0.8;
-}
+    .button
+    {
+        background-color:rgb(245, 140, 27);
+        color: white;
+        text-decoration: none;
+        border-radius: 5px;
+        width: 200px;
+        padding: 10px;
+        margin: 10px auto;
+    }
+    .firstsiv {
+        max-width: 1300px;
+        margin: auto;
+        background: white;
+        padding: 20px;
+        border-radius: 8px;
+        box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    }
+    .btn:hover {
+        opacity: 0.8;
+    }
 
-h2{
-    font-size:35px;
+    h2{
+        font-size:35px;
     
-}
+    }
 
-footer {
+    footer {
         text-align: center;
         padding: 20px;
         background-color: #333;
         color: #fff;
         font-size: 20px;
     }
+
+    form.search-sort-form {
+        margin-bottom: 30px;
+        text-align: center;
+    }
+
+    form.search-sort-form input,
+    form.search-sort-form select
+    {
+        padding: 10px 14px;
+        margin: 6px;
+        border-radius: 8px;
+        border: 1px solid #ccc;
+        font-size: 16px;
+            
+    }
+
+    form.search-sort-form button
+    {
+        background-color:rgb(179, 155, 84);
+        padding: 10px 14px;
+        margin: 6px;
+    }
+
+    .clear-button {
+        text-decoration: none;
+        background-color: #888;
+        color: white;
+        padding: 10px 14px;
+        margin: 6px;
+        border-radius: 8px;
+        
+    }
+
+    .clear-button:hover {
+        background-color: #555;
+    }
+
 
 </style>
 
@@ -103,7 +141,16 @@ function recycle_binlist(){
 
     <div class="firstsiv">
     <h2>Manage Customer</h2>
-
+    <form method="GET" class="search-sort-form">
+    <input type="text" name="search" placeholder="Search by name" value="<?php echo isset($_GET['search']) ? $_GET['search'] : ''; ?>">
+        <select name="sort">
+        <option value="">Sort by</option>
+        <option value="name_asc" <?= isset($_GET['sort']) && $_GET['sort'] == 'name_asc' ? 'selected' : '' ?>>Name: A-Z</option>
+        <option value="name_desc" <?= isset($_GET['sort']) && $_GET['sort'] == 'name_desc' ? 'selected' : '' ?>>Name: Z-A</option>
+    </select>
+    <button class="buttons" type="submit">Apply</button>
+    <a class="button clear-button" href="A.manageUser.php">Clear Filters</a>
+    </form>
    
     <button class="button" onclick="recycle_binlist()">Recycle Bin</button>
 
@@ -118,7 +165,18 @@ function recycle_binlist(){
     </tr>
 
 <?php
-$result=mysqli_query($connect,"SELECT * FROM register WHERE status='active'");
+$search = isset($_GET['search']) ? mysqli_real_escape_string($connect, $_GET['search']) : '';
+$sort = isset($_GET['sort']) ? $_GET['sort'] : '';
+$query = "SELECT * FROM register where status='active'";
+if (!empty($search)) {
+$query .= " AND Regis_Username LIKE '%$search%'";
+}
+if ($sort == 'name_asc') {
+$query .= " ORDER BY Regis_Username ASC";
+} elseif ($sort == 'name_desc') {
+$query .= " ORDER BY Regis_Username DESC";
+}
+$result = mysqli_query($connect, $query);
 $count=mysqli_num_rows($result);
 while($row=mysqli_fetch_assoc($result)){
 ?>

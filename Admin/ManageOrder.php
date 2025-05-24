@@ -57,6 +57,43 @@ include("dataconnect.php");
         font-size: 20px;
     }
 
+    form.search-sort-form {
+        margin-bottom: 30px;
+        text-align: center;
+    }
+
+    form.search-sort-form input,
+    form.search-sort-form select
+    {
+        padding: 10px 14px;
+        margin: 6px;
+        border-radius: 8px;
+        border: 1px solid #ccc;
+        font-size: 16px;
+            
+    }
+
+    form.search-sort-form button
+    {
+        background-color:rgb(179, 155, 84);
+        padding: 10px 14px;
+        margin: 6px;
+    }
+
+    .clear-button {
+        text-decoration: none;
+        background-color: #888;
+        color: white;
+        padding: 10px 14px;
+        margin: 6px;
+        border-radius: 8px;
+        
+    }
+
+    .clear-button:hover {
+        background-color: #555;
+    }
+
 </style>
 
 
@@ -70,10 +107,21 @@ include("dataconnect.php");
             .then(data => {
                 document.getElementById('menu').innerHTML = data;
             });
-    </script> 
+    </script>
+
 
     <div class="firstsiv">
     <h2>Manage Order</h2>
+    <form method="GET" class="search-sort-form">
+    <input type="text" name="search" placeholder="Search by name" value="<?php echo isset($_GET['search']) ? $_GET['search'] : ''; ?>">
+        <select name="sort">
+        <option value="">Sort by</option>
+        <option value="name_asc" <?= isset($_GET['sort']) && $_GET['sort'] == 'name_asc' ? 'selected' : '' ?>>Name: A-Z</option>
+        <option value="name_desc" <?= isset($_GET['sort']) && $_GET['sort'] == 'name_desc' ? 'selected' : '' ?>>Name: Z-A</option>
+    </select>
+    <button class="buttons" type="submit">Apply</button>
+    <a class="button clear-button" href="ManageOrder.php">Clear Filters</a>
+    </form>
 
 
 <table>
@@ -88,8 +136,20 @@ include("dataconnect.php");
 
     <?php
     mysqli_select_db($connect, "phone_shop");
-    $result = mysqli_query($connect,"select * from payment");
-    $count=mysqli_num_rows($result);
+    $search = isset($_GET['search']) ? mysqli_real_escape_string($connect, $_GET['search']) : '';
+    $sort = isset($_GET['sort']) ? $_GET['sort'] : '';
+    $query = "SELECT * FROM payment";
+    if (!empty($search)) {
+    $query .= " WHERE UName LIKE '%$search%'";
+    }
+    if ($sort == 'name_asc') {
+    $query .= " ORDER BY UName ASC";
+    } elseif ($sort == 'name_desc') {
+    $query .= " ORDER BY UName DESC";
+    }
+
+    $result = mysqli_query($connect, $query);
+    $count = mysqli_num_rows($result);
     while($row=mysqli_fetch_assoc($result)){
     ?>
 
