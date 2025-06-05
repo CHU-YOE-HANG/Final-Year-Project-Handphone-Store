@@ -120,20 +120,31 @@
             echo "</table>";
         ?>
         <?php
-            if(isset($_POST["catergorys"])){
-                $brand = $_POST['brand_name'];
-                $country = $_POST['country_origin'];
-                mysqli_query($connect, "INSERT INTO brand (brand_name, country_origin) VALUES ('$brand', '$country')");
-                ?>
-                
-            <!-- This function will display the category saved-->
-                <script type="text/javascript">
-                    alert("<?php echo $brand; ?> saved");
-                    window.location.replace("manage-category.php");
-                </script>
-                <?php
-            }
-        ?>
+    if (isset($_POST["catergorys"])) {
+        $brand = $_POST['brand_name'];
+        $country = $_POST['country_origin'];
+
+        
+        $check = mysqli_query($connect, "SELECT * FROM brand WHERE country_origin = '$country'");
+        
+        if (mysqli_num_rows($check) > 0) {
+            ?>
+            <script type="text/javascript">
+                alert("This brand model alaready have !");
+            </script>
+            <?php
+        } else {
+            mysqli_query($connect, "INSERT INTO brand (brand_name, country_origin) VALUES ('$brand', '$country')");
+            ?>
+            <script type="text/javascript">
+                alert("<?php echo $brand; ?>added successfully!");
+                window.location.replace("manage-category.php");
+            </script>
+            <?php
+        }
+    }
+?>
+
     </section>
     <footer>
         <p>&copy; 2025 Mobile Website. All rights reserved.</p>

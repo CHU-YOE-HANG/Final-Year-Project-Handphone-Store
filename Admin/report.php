@@ -127,6 +127,7 @@
     <th>Date</th>
     <th>Buyers Name</th>
     <th>Order item</th>
+    <th>Quantity</th>
     <th>Total Price</th>
     </tr>
 
@@ -155,6 +156,7 @@
     <td><?php echo  $row['Cdate']?></td>
     <td><?php echo  $row['UName']?></td>
     <td><?php echo  $row['Cphone']?></td>
+    <td><?php echo  $row['Cquantity']?></td>
     <td><?php echo  $row['TPrice']?></td>
     
 
